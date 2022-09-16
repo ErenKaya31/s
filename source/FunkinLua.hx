@@ -464,6 +464,13 @@ class FunkinLua {
 
 			return runningScripts;
 		});
+		
+		Lua_helper.add_callback(lua, "addGlitchEffect", function(tag:String) {
+			if(lePlayState.modchartSprites.exists(tag)) {
+				var shit:ModchartSprite = lePlayState.modchartSprites.get(tag);
+				shit.shader = PlayState.the3DWorldEffect.shader;
+			}
+		});
 
 		Lua_helper.add_callback(lua, "callOnLuas", function(?funcName:String, ?args:Array<Dynamic>, ignoreStops=false, ignoreSelf=true, ?exclusions:Array<String>){
 			if(funcName==null){
